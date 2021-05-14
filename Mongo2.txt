@@ -6,7 +6,7 @@ Section 1:
 
 2.db.zipcodes.aggregate([{$match:{city:"ATLANTA",state:"GA"}}])
 
-3.db.zipcodes.aggregate({$group:{$count:zipcodes}})
+3..db.zipcodes.aggregate([{$match : {city :"ATLANTA"}},{$group :{_id :{id:"$_id"}}},{$count:"id"}])
 
 4.db.zipcodes.aggregate([{$match:{city:"ATLANTA"},{$group:{_id:"$city",population:{$sum:"$pop")}}}]).pretty()
 
