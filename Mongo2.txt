@@ -1,15 +1,29 @@
 MongoDB Assignment 2
 
+Section 1:
+
 1.db.zipcodes.find({city:"ATLANTA",state:"GA"})
 
 2.db.zipcodes.aggregate([{$match:{city:"ATLANTA",state:"GA"}}])
 
 3.db.zipcodes.aggregate({$group:{$count:zipcodes}})
 
-4.db.zipcodes.aggregate({$group:{$sum:"$pop"}})
+4.db.zipcodes.aggregate([{$match:{city:"ATLANTA"},{$group:{_id:"$city",population:{$sum:"$pop")}}}]).pretty()
+
+Section 2:
 
 5.db.zipcodes.aggregate([{ $group: { _id: "$state", totalPop: { $sum: "$pop"}}}])
 
 6.db.zipcodes.find().sort({pop:-1})
 
 7.db.zipcodes.find().sort({pop:-1}).limit(3)
+
+Section 3:
+
+1.db.zipcodes.aggregate([{$group:{_id:{city:"$city",state:"$state"},totalpop:{$sum:"$pop"}}}])
+
+2.db.zipcodes.aggregate([{$group:{ _id:{city:"$city",state:"$state"},totalpop:{$sum:"$pop"}}},{$sort:{totalpop:-1}}])
+
+3.db.zipcodes.aggregate([{$group:{_id:{city:"$city",state:"$state"},totalpop:{$sum:"$pop"}}},{$sort:{totalpop:-1}},{$limit:3}])
+
+4.db.zipcodes.aggregate([{$match:{state:"TX'}},{$group:{_id:{city:"$city",state:"$state"},totalpop:{$sum:"$pop"}}},{$sort:{totalpop:-1}},{$limit:3}])
