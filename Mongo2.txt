@@ -1,0 +1,15 @@
+MongoDB Assignment 2
+
+1.db.zipcodes.find({city:"ATLANTA",state:"GA"})
+
+2.db.zipcodes.aggregate([{$match:{city:"ATLANTA",state:"GA"}}])
+
+3.
+
+4.
+
+5.db.zipcodes.aggregate([{ $group: { _id: "$state", totalPop: { $sum: "$pop"}}}])
+
+6.db.zipcodes.find().sort({pop:-1})
+
+7.db.zipcodes.find().sort({pop:-1}).limit(3)
