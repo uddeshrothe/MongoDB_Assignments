@@ -4,9 +4,9 @@ MongoDB Assignment 2
 
 2.db.zipcodes.aggregate([{$match:{city:"ATLANTA",state:"GA"}}])
 
-3.
+3.db.zipcodes.aggregate({$group:{$count:zipcodes}})
 
-4.
+4.db.zipcodes.aggregate({$group:{$sum:"$pop"}})
 
 5.db.zipcodes.aggregate([{ $group: { _id: "$state", totalPop: { $sum: "$pop"}}}])
 
